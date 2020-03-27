@@ -1,0 +1,98 @@
+<template>
+    <div class="">
+        <h1>Draggable DIV Element</h1>
+
+        <p>Click and hold the mouse button down while moving the DIV
+            element</p>
+
+        <div id="mydiv">
+            <div id="mydivheader">Click here to move</div>
+            <p>Move</p>
+            <p>this</p>
+            <p>DIV</p>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: '',
+    components: {},
+    props: {},
+    data() {
+        return {
+            pos1: 0,
+            pos2: 0,
+            pos3: 0,
+            pos4: 0
+        }
+    },
+    computed: {},
+    created() {},
+    mounted() {
+        //Make the DIV element draggagle:
+        this.dragElement(document.getElementById('mydiv'))
+    },
+    methods: {
+        dragElement(elmnt) {
+            if (document.getElementById(elmnt.id + 'header')) {
+                /* if present, the header is where you move the DIV from:*/
+                document.getElementById(
+                    elmnt.id + 'header'
+                ).onmousedown = dragMouseDown
+            } else {
+                /* otherwise, move the DIV from anywhere inside the DIV:*/
+                elmnt.onmousedown = dragMouseDown
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event
+                e.preventDefault()
+                // get the mouse cursor position at startup:
+                this.pos3 = e.clientX
+                this.pos4 = e.clientY
+                document.onmouseup = closeDragElement
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag
+            }
+
+            function elementDrag(e) {
+                e = e || window.event
+                e.preventDefault()
+                // calculate the new cursor position:
+                this.pos1 = this.pos3 - e.clientX
+                this.pos2 = this.pos4 - e.clientY
+                this.pos3 = e.clientX
+                this.pos4 = e.clientY
+                // set the element's new position:
+                elmnt.style.top = elmnt.offsetTop - this.pos2 + 'px'
+                elmnt.style.left = elmnt.offsetLeft - this.pos1 + 'px'
+            }
+
+            function closeDragElement() {
+                /* stop moving when mouse button is released:*/
+                document.onmouseup = null
+                document.onmousemove = null
+            }
+        }
+    }
+}
+</script>
+
+<style lang="stylus" >
+#mydiv {
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    text-align: center;
+    border: 1px solid #d3d3d3;
+}
+
+#mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+}
+</style>
