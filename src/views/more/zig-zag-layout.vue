@@ -25,7 +25,7 @@
                         Application</button>
                 </div>
                 <div class="column-33">
-                    <img src="https://www.w3schools.com//w3images/img_app.jpg" width="335"
+                    <img src="https://www.w3schools.com/w3images/img_app.jpg" width="335"
                          height="471">
                 </div>
             </div>
@@ -35,7 +35,7 @@
         <div class="container" style="background-color:#f1f1f1">
             <div class="row">
                 <div class="column-33">
-                    <img src="https://www.w3schools.com//w3images/app5.jpg" alt="App"
+                    <img src="https://www.w3schools.com/w3images/app5.jpg" alt="App"
                          width="335" height="471">
                 </div>
                 <div class="column-66">
@@ -80,7 +80,7 @@
                         Application</button>
                 </div>
                 <div class="column-33">
-                    <img src="https://www.w3schools.com//w3images/img_app.jpg" width="335"
+                    <img src="https://www.w3schools.com/w3images/img_app.jpg" width="335"
                          height="471">
                 </div>
             </div>
